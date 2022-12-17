@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Zverny</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    
-	<link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="stylesheet" href="TemplateData/style.css">
 	
 	<!-- VK Games SDK -->
     
@@ -28,6 +27,8 @@
       </div>
     </div>
     <div id="unity-fullscreen-button" style="display: none;"></div>
+	
+	
 	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 	 
 	
@@ -107,14 +108,15 @@
       }
 	
 	</script>
+	
     <script>
       const hideFullScreenButton = "1";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/RunVK5.loader.js";
+      const loaderUrl = buildUrl + "/RunVK6.loader.js";
       const config = {
-        dataUrl: buildUrl + "/RunVK5.data",
-        frameworkUrl: buildUrl + "/RunVK5.framework.js",
-        codeUrl: buildUrl + "/RunVK5.wasm",
+        dataUrl: buildUrl + "/RunVK6.data",
+        frameworkUrl: buildUrl + "/RunVK6.framework.js",
+        codeUrl: buildUrl + "/RunVK6.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Run",
         productName: "Zverny",
