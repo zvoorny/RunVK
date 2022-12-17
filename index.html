@@ -5,17 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Zverny</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    
-	<link rel="stylesheet" href="TemplateData/style.css">
-	<!-- VK Games SDK -->
-    
-	<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-	
-	
+    <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" style = "position: absolute; width: 100%; height: 100%;"></canvas>
+      <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -62,11 +56,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/RunVK2.loader.js";
+      var loaderUrl = buildUrl + "/RunVK3.loader.js";
       var config = {
-        dataUrl: buildUrl + "/RunVK2.data.gz",
-        frameworkUrl: buildUrl + "/RunVK2.framework.js.gz",
-        codeUrl: buildUrl + "/RunVK2.wasm.gz",
+        dataUrl: buildUrl + "/RunVK3.data.gz",
+        frameworkUrl: buildUrl + "/RunVK3.framework.js.gz",
+        codeUrl: buildUrl + "/RunVK3.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Run",
         productName: "Zverny",
@@ -109,85 +103,5 @@
       };
       document.body.appendChild(script);
     </script>
-	
-	 <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-	 
-	
-	
-	<script type="text/javascript">
-	
-	vkBridge.send('VKWebAppInit');
-
-
-
-      function auth(){
-        vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
-          console.log(_info);
-          unityI.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
-        });
-      }
-	  
-	
-	  
-
-      function getUserData(){
-        vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
-        console.log(data);
-        unityI.SendMessage('VKSDK', 'DataGetting', JSON.stringify(data));
-      });}
-
-      function setUserData(data){
-        console.log(data);
-        vkBridge.send('VKWebAppStorageSet',{"key": "_save" , "value": data}).then(_info =>{
-          console.log("Saved!")});
-      }
-
-      function showFullscrenAd(){
-        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"interstitial"}).then(data => {
-          console.log(data);});
-      }
-	  
-	  function ShowCommonADV(){
-        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"interstitial"}).then(data => {
-          console.log(data);});
-      }
-	  
-	  function ShowCommonAdvertisment(){
-        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"interstitial"}).then(data => {
-          console.log(data);});
-      }
-
-      function showRewardedAd(){
-        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"reward"}).then(data => {
-          console.log(data);
-          unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
-      }
-	  
-	  function ShowAd(){
-        vkBridge.send('VKWebAppShowNativeAds',{ad_format:"reward"}).then(data => {
-          console.log(data);
-          unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
-      }
-	  
-	  function RepostFriends(){
-        vkBridge.send("VKWebAppShowInviteBox", {})
-         .then(data => console.log(data.success))  
-        .catch(error => console.log(error));
-      }
-	  
-	  function Favorite(){
-        vkBridge.send("VKWebAppAddToFavorites", {})
-         .then(data => console.log(data.success))  
-        .catch(error => console.log(error));
-      }
-	  
-	  function Repost(arg){
-        vkBridge.send("VKWebAppShowWallPostBox", {
-  "message": "Я набрал " +arg+ " очков в игре Flappy Rick, а сколько сможешь ты?",
-  "attachments": "https://vk.com/app51505083"
-});
-      }
-	
-	</script>
   </body>
 </html>
